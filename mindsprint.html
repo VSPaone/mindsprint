@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINDSPRINT GUIDE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+        }
+        .phase-btn.active {
+            background-color: #ca8a04;
+            color: white;
+            border-bottom: 4px solid #583d01;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 1000px; /* Arbitrary large height */
+            opacity: 1;
+        }
+        .rotate-icon {
+            transition: transform 0.3s;
+        }
+        .rotate-icon.open {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navbar / Header -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <img class="h-10 mr-3" src="BOV PNG.png" alt="MINDSPRINT Logo">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">MINDSPRINT 2K25 Roadmap</h1>
+                        <p class="text-sm text-gray-500">Guided Problem Solving</p>
+                    </div>
+                </div>
+                <!-- Download Links -->
+                <div class="hidden md:flex space-x-3">
+                    <a href="Instructions.pdf" download class="flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <i class="fas fa-file-pdf text-red-500 mr-2"></i> Instructions
+                    </a>
+                    <a href="GitHub.pdf" download class="flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <i class="fab fa-github text-gray-900 mr-2"></i> GitHub
+                    </a>
+                    <a href="LinkedIn.pdf" download class="flex items-center px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <i class="fab fa-linkedin text-blue-700 mr-2"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile Download Links -->
+            <div class="md:hidden flex space-x-2 pb-2 text-xs">
+                 <a href="Instructions.pdf" download class="flex-1 text-center py-1 border rounded bg-white">INFO</a>
+                 <a href="GitHub.pdf" download class="flex-1 text-center py-1 border rounded bg-white">GitHub</a>
+                 <a href="LinkedIn.pdf" download class="flex-1 text-center py-1 border rounded bg-white">LinkedIn</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- General Info Banner -->
+    <div class="bg-yellow-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 text-center text-sm sm:text-base">
+            <span class="font-bold">Objective:</span> Not a race, but guided problem solving. 
+            <span class="mx-2">|</span> 
+            <span class="font-bold">Submission Platform:</span> <a href="http://82.112.231.147:3000/" target="_blank" class="underline hover:text-yellow-200">http://82.112.231.147:3000/</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Phase Tabs -->
+        <div class="flex flex-wrap justify-center border-b border-gray-200 bg-white rounded-t-lg shadow-sm mb-6" id="phase-tabs">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Phase Header Info -->
+        <div id="phase-info" class="mb-6 p-6 bg-white rounded-lg shadow-md border-l-4 border-yellow-500">
+            <!-- Populated by JS -->
+        </div>
+
+        <!-- Domain Accordions -->
+        <div id="domain-list" class="space-y-4">
+            <!-- Populated by JS -->
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-2">Don't forget to document your journey on LinkedIn & GitHub (10% Evaluation).</p>
+            <p class="text-gray-400 text-sm">&copy; 2025 MINDSPRINT & BRAINOVISION TEAM</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Structure
+        const phases = [
+            {
+                id: 1,
+                title: "Phase 1: Discovery & Definition",
+                duration: "2 Hours",
+                time: "Day 1, 02:00 PM – 04:00 PM",
+                domains: [
+                    {
+                        name: "1. Artificial Intelligence (Intellect Innovators)",
+                        process: "Problem Framing + Dataset Strategy. Define the specific problem and identify/prepare the necessary datasets.",
+                        deliverables: "A clear problem statement document and a dataset schema/source list.",
+                        criteria: "Problem Research & Dataset Ideation (13%)",
+                        tools: "Use Kaggle/HuggingFace for datasets. Create a repository on GitHub.",
+                        submission: "Upload PDF/Doc of problem statement to the platform."
+                    },
+                    {
+                        name: "2. EV & Electrical Vehicles (Echo Drivers)",
+                        process: "EV Research & Problem Framing. Analyze the problem statement regarding EVs and define scope.",
+                        deliverables: "Research document outlining the specific EV challenge and proposed approach.",
+                        criteria: "EV Research & Problem Framing (13%)",
+                        tools: "Use simulation tools or schematics software for initial notes.",
+                        submission: "Upload research abstract to the platform."
+                    },
+                    {
+                        name: "3. Bot Builds (IoT / Robotics)",
+                        process: "Problem Definition & Environment Constraints. Identify physical constraints and hardware requirements.",
+                        deliverables: "A document detailing the operating environment and sensor requirements.",
+                        criteria: "Problem Understanding (10%)",
+                        tools: "List BOM (Bill of Materials) needed. Initialize GitHub repo.",
+                        submission: "Upload Problem Definition document."
+                    },
+                    {
+                        name: "4. Femine Sakthi (Women Empowerment)",
+                        process: "Problem Understanding & Impact Mapping. Map out the social impact and specific user needs.",
+                        deliverables: "Impact assessment report and problem definition.",
+                        criteria: "Problem Identification (18%)",
+                        tools: "Use Miro/Canva for impact mapping.",
+                        submission: "Upload Impact Map/Document."
+                    },
+                    {
+                        name: "5. Code Guardians (Cybersecurity & Blockchain)",
+                        process: "Threat/Trust Model & Requirements. Define the security threat or the trust model for blockchain.",
+                        deliverables: "A threat modeling document or trust architecture outline.",
+                        criteria: "Problem Analysis (13%)",
+                        tools: "Use Draw.io for threat modeling diagrams.",
+                        submission: "Upload Threat/Trust Model document."
+                    },
+                    {
+                        name: "6. Superposition (Quantum Computing)",
+                        process: "Quantum Problem Formulation. Map the real-world problem to a quantum formulation (e.g., QUBO).",
+                        deliverables: "Mathematical formulation of the problem.",
+                        criteria: "Quantum Problem Mapping (15%)",
+                        tools: "Qiskit/Cirq documentation.",
+                        submission: "Upload formulation document."
+                    },
+                    {
+                        name: "7. Medi Minds (Biomedical)",
+                        process: "Clinical Problem Mapping + Compliance Requirements. Address clinical needs and regulatory constraints.",
+                        deliverables: "Document on clinical workflow and compliance checklist.",
+                        criteria: "Medical Problem Research (18%)",
+                        tools: "PubMed for research.",
+                        submission: "Upload Clinical Mapping document."
+                    },
+                    {
+                        name: "8. App Ventures (Mobile & Web)",
+                        process: "Ideation & User Need Mapping. Brainstorm features and map user requirements.",
+                        deliverables: "User personas and feature list.",
+                        criteria: "Requirement & UX Research (13%)",
+                        tools: "Figma/Miro for brainstorming.",
+                        submission: "Upload User Need document."
+                    },
+                    {
+                        name: "9. Plan Horizons (Business Plan)",
+                        process: "Research + Forecast Modelling Blueprint. Market research and initial forecasting models.",
+                        deliverables: "Market analysis report and forecasting blueprint.",
+                        criteria: "Market Research & Problem Discovery (18%)",
+                        tools: "Excel/PowerBI for initial data analysis.",
+                        submission: "Upload Market Research document."
+                    },
+                    {
+                        name: "10. Other Innovations (Open Domain)",
+                        process: "Opportunity Identification + Stakeholder Mapping. Identify the unique opportunity and involved stakeholders.",
+                        deliverables: "Stakeholder map and opportunity definition.",
+                        criteria: "Problem Definition & Creativity (18%)",
+                        tools: "Business Model Canvas tools.",
+                        submission: "Upload Stakeholder document."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "Phase 2: Architecture & Design",
+                duration: "4 Hours",
+                time: "Day 1, 04:00 PM – 08:00 PM",
+                domains: [
+                    {
+                        name: "1. Artificial Intelligence",
+                        process: "Model Architecture + Feature Pipeline. Design the model structure and preprocessing steps.",
+                        deliverables: "Architecture diagrams and data preprocessing code.",
+                        criteria: "Data Preprocessing (13%) + Model Architecture (8%)",
+                        tools: "GitHub for version control. Draw.io for diagrams.",
+                        submission: "Upload Architecture diagrams and link to GitHub repo."
+                    },
+                    {
+                        name: "2. EV & Electrical Vehicles",
+                        process: "Circuit & Architecture Design. Design the electrical circuits and overall system architecture.",
+                        deliverables: "Circuit diagrams and system schematics.",
+                        criteria: "Circuit & Architecture Design (13%)",
+                        tools: "Circuit simulation software.",
+                        submission: "Upload Circuit Diagrams."
+                    },
+                    {
+                        name: "3. Bot Builds",
+                        process: "Hardware + Firmware Architecture. Design the connection between sensors and microcontrollers.",
+                        deliverables: "Circuit design and firmware logic flow.",
+                        criteria: "Hardware & Sensor Design (18%)",
+                        tools: "Fritzing/Tinkercad.",
+                        submission: "Upload Hardware Design schematics."
+                    },
+                    {
+                        name: "4. Femine Sakthi",
+                        process: "User Journey + Support Architecture. Design the user flow and technical support structure.",
+                        deliverables: "Wireframes and system architecture.",
+                        criteria: "Research & Solution Ideation (18%)",
+                        tools: "Figma for wireframing.",
+                        submission: "Upload User Journey/Architecture docs."
+                    },
+                    {
+                        name: "5. Code Guardians",
+                        process: "Protocol + Security Architecture. Design the security protocols or blockchain consensus mechanism.",
+                        deliverables: "Security architecture diagram and protocol specification.",
+                        criteria: "Architecture & Security Planning (13%)",
+                        tools: "UML tools.",
+                        submission: "Upload Security Architecture document."
+                    },
+                    {
+                        name: "6. Superposition",
+                        process: "QUBO/Circuit Architecture. Design the quantum circuit or annealing model.",
+                        deliverables: "Quantum circuit diagrams/code snippets.",
+                        criteria: "Algorithm Ideation (15%) + Quantum Circuit Design (15%)",
+                        tools: "IBM Quantum Composer.",
+                        submission: "Upload Circuit Design."
+                    },
+                    {
+                        name: "7. Medi Minds",
+                        process: "Data/Signal Architecture + Risk Design. Plan how medical data/signals are processed safely.",
+                        deliverables: "Data flow diagrams and risk assessment matrix.",
+                        criteria: "Solution Feasibility (14%)",
+                        tools: "Visio/Lucidchart.",
+                        submission: "Upload Architecture & Risk document."
+                    },
+                    {
+                        name: "8. App Ventures",
+                        process: "System Architecture + UI/UX Blueprint. Technical architecture and visual design.",
+                        deliverables: "UI Mockups and Database Schema.",
+                        criteria: "UI/UX Design (13%)",
+                        tools: "Figma/Adobe XD.",
+                        submission: "Upload UI Mockups."
+                    },
+                    {
+                        name: "9. Plan Horizons",
+                        process: "Data Architecture + Prediction Design. Structure the data for the business model.",
+                        deliverables: "Business Model Canvas and Data Flow.",
+                        criteria: "Business Model (Canvas) (18%)",
+                        tools: "Strategyzer/Canvas tools.",
+                        submission: "Upload Business Model Canvas."
+                    },
+                    {
+                        name: "10. Other Innovations",
+                        process: "Architecture Design (Tech + Value Model). Define technical and value proposition structures.",
+                        deliverables: "Technical architecture diagram.",
+                        criteria: "Research & Design (18%)",
+                        tools: "Standard diagramming tools.",
+                        submission: "Upload Design document."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "Phase 3: Prototyping",
+                duration: "4 Hours",
+                time: "Day 1, 08:00 PM – 12:00 AM",
+                domains: [
+                    {
+                        name: "1. Artificial Intelligence",
+                        process: "Baseline Model + Prototype UI. Train a baseline model and create a simple interface.",
+                        deliverables: "Working baseline code and initial training logs.",
+                        criteria: "Model Development & Training (22%)",
+                        tools: "Python/TensorFlow/PyTorch. Push to GitHub.",
+                        submission: "GitHub link to baseline model."
+                    },
+                    {
+                        name: "2. EV & Electrical Vehicles",
+                        process: "Battery/Motor/Controller Planning. Specifications for battery/motor and initial simulation setup.",
+                        deliverables: "Specifications for battery/motor and initial simulation setup.",
+                        criteria: "Battery/Motor/Controller Planning (13%)",
+                        tools: "MATLAB/Simulink.",
+                        submission: "Upload Planning/Simulation files."
+                    },
+                    {
+                        name: "3. Bot Builds",
+                        process: "Sensor/Actuator Integrated Prototype. Connect sensors and write basic embedded code.",
+                        deliverables: "Functional code reading sensor data.",
+                        criteria: "Embedded Programming (18%)",
+                        tools: "Arduino IDE/PlatformIO.",
+                        submission: "GitHub link to embedded code."
+                    },
+                    {
+                        name: "4. Femine Sakthi",
+                        process: "Prototype with Key Empowerment Tools. Build the core features of the platform.",
+                        deliverables: "MVP with core features operational.",
+                        criteria: "Design / Prototype Planning (10%)",
+                        tools: "Rapid prototyping tools.",
+                        submission: "Link to Prototype."
+                    },
+                    {
+                        name: "5. Code Guardians",
+                        process: "Proof-of-Concept (Detection/Verification Core). Implement smart contracts or core security scripts.",
+                        deliverables: "Deployed smart contract (testnet) or running scripts.",
+                        criteria: "Implementation / Smart Contracts (22%)",
+                        tools: "Remix/Metamask/Burp Suite.",
+                        submission: "GitHub link / Contract Address."
+                    },
+                    {
+                        name: "6. Superposition",
+                        process: "Classical-Quantum Hybrid Prototype. Implement the hybrid logic.",
+                        deliverables: "Code running a simple quantum simulation.",
+                        criteria: "Implementation & Simulation (15%)",
+                        tools: "Python Qiskit.",
+                        submission: "GitHub link."
+                    },
+                    {
+                        name: "7. Medi Minds",
+                        process: "Prototype for Monitoring/Analytics. Build the core device or monitoring interface.",
+                        deliverables: "Prototype design or initial system build.",
+                        criteria: "Prototype/System Design (18%)",
+                        tools: "CAD/Bio-medical simulation tools.",
+                        submission: "Upload Prototype Design/Code."
+                    },
+                    {
+                        name: "8. App Ventures",
+                        process: "Functional Prototype (Core Flows). Develop the Frontend.",
+                        deliverables: "Interactive frontend with mock data.",
+                        criteria: "Frontend Development (18%)",
+                        tools: "React/Flutter/HTML/CSS.",
+                        submission: "GitHub link / Hosted link."
+                    },
+                    {
+                        name: "9. Plan Horizons",
+                        process: "Prototype Analytics Engine. Build the financial/revenue model.",
+                        deliverables: "Financial spreadsheets or analytics dashboard.",
+                        criteria: "Financials & Revenue Model (18%)",
+                        tools: "Excel/Tableau.",
+                        submission: "Upload Financial Model."
+                    },
+                    {
+                        name: "10. Other Innovations",
+                        process: "Prototype With Core Functionality. Build the physical or digital MVP.",
+                        deliverables: "Working prototype code or design.",
+                        criteria: "Development / Prototype (22%)",
+                        tools: "Relevant stack.",
+                        submission: "GitHub link / Video of prototype."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "Phase 4: Implementation",
+                duration: "4 Hours",
+                time: "Day 2, 12:00 AM – 04:00 AM",
+                domains: [
+                    {
+                        name: "1. Artificial Intelligence",
+                        process: "Full ML System Implementation. Integrate model with backend/frontend.",
+                        deliverables: "Fully integrated application.",
+                        criteria: "Integration (9%)",
+                        tools: "Flask/FastAPI/Streamlit.",
+                        submission: "GitHub Link + Demo Video."
+                    },
+                    {
+                        name: "2. EV & Electrical Vehicles",
+                        process: "Prototype Build / Simulation. Construct the final simulation or physical prototype.",
+                        deliverables: "Comprehensive simulation results or physical build video.",
+                        criteria: "Prototype Build / Simulation (22%)",
+                        tools: "LabVIEW/Simulink.",
+                        submission: "Upload Simulation Files/Video."
+                    },
+                    {
+                        name: "3. Bot Builds",
+                        process: "Autonomous/Controlled Operation Implementation. Mechanical construction and full logic.",
+                        deliverables: "Robot capable of performing the task.",
+                        criteria: "Robot Mechanical Construction (18%)",
+                        tools: "3D Printing/Assembly.",
+                        submission: "Video of Robot Operation."
+                    },
+                    {
+                        name: "4. Femine Sakthi",
+                        process: "Full-Scale Platform Implementation. Complete development of the solution.",
+                        deliverables: "Fully functional app/platform.",
+                        criteria: "Development (22%)",
+                        tools: "Full stack development.",
+                        submission: "GitHub Link."
+                    },
+                    {
+                        name: "5. Code Guardians",
+                        process: "Full Secure System Implementation. Auditing and penetration testing.",
+                        deliverables: "Vulnerability audit report and patched code.",
+                        criteria: "Pen-testing / Vulnerability Audit (13%)",
+                        tools: "OWASP ZAP/SonarQube.",
+                        submission: "Upload Audit Report."
+                    },
+                    {
+                        name: "6. Superposition",
+                        process: "Complete Solver + Optimization Implementation. Optimize the quantum algorithm.",
+                        deliverables: "Optimized code with performance metrics.",
+                        criteria: "Performance Optimization (8%)",
+                        tools: "Qiskit Aer.",
+                        submission: "GitHub Link."
+                    },
+                    {
+                        name: "7. Medi Minds",
+                        process: "Full Workflow Implementation for Care Teams. Develop the model/device logic fully.",
+                        deliverables: "Working model/device code.",
+                        criteria: "Model/Device Development (18%)",
+                        tools: "Python/C++.",
+                        submission: "GitHub Link."
+                    },
+                    {
+                        name: "8. App Ventures",
+                        process: "Full Feature Implementation. Backend and API integration.",
+                        deliverables: "Connected Frontend and Backend.",
+                        criteria: "Backend / API Development (18%)",
+                        tools: "Node/Django/Firebase.",
+                        submission: "GitHub Link."
+                    },
+                    {
+                        name: "9. Plan Horizons",
+                        process: "Decision Intelligence Implementation. Design the MVP for the business idea.",
+                        deliverables: "MVP Designs/Mockups.",
+                        criteria: "Prototype/MVP Design (14%)",
+                        tools: "Adobe XD/Figma.",
+                        submission: "Upload MVP Design."
+                    },
+                    {
+                        name: "10. Other Innovations",
+                        process: "End-to-End Platform Implementation. Finalize uniqueness and innovation aspects.",
+                        deliverables: "Proof of innovation and uniqueness.",
+                        criteria: "Innovation & Uniqueness (10%)",
+                        tools: "N/A",
+                        submission: "Innovation Document."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "Phase 5: Refinement & Closure",
+                duration: "2 Hours",
+                time: "Day 2, 04:00 AM – 06:00 AM",
+                domains: [
+                    {
+                        name: "1. Artificial Intelligence",
+                        process: "Fine-Tuning, Evaluation & Error Fixing. Validate model accuracy.",
+                        deliverables: "Evaluation metrics (F1 score, accuracy) and clean code.",
+                        criteria: "Evaluation & Optimization (10%)",
+                        submission: "Final GitHub Link + LinkedIn Post."
+                    },
+                    {
+                        name: "2. EV & Electrical Vehicles",
+                        process: "Efficiency & Safety Testing. Validate safety and efficiency.",
+                        deliverables: "Safety test report.",
+                        criteria: "Efficiency & Safety Testing (10%)",
+                        submission: "Upload Test Report + LinkedIn Post."
+                    },
+                    {
+                        name: "3. Bot Builds",
+                        process: "Calibration, Debugging & Field Reliability Fixes. Test performance.",
+                        deliverables: "Performance test log.",
+                        criteria: "Testing & Performance (10%)",
+                        submission: "Upload Test Log + LinkedIn Post."
+                    },
+                    {
+                        name: "4. Femine Sakthi",
+                        process: "Safety, Trust & Accessibility Refinements. Ensure social feasibility.",
+                        deliverables: "Feasibility study and testing report.",
+                        criteria: "Social Impact & Feasibility (10%)",
+                        submission: "Upload Feasibility Doc + LinkedIn Post."
+                    },
+                    {
+                        name: "5. Code Guardians",
+                        process: "Hardening, Audits & Patch Fixes. Ensure data security.",
+                        deliverables: "Compliance report.",
+                        criteria: "Data Security & Compliance (9%)",
+                        submission: "Upload Compliance Doc + LinkedIn Post."
+                    },
+                    {
+                        name: "6. Superposition",
+                        process: "Error Mitigation, Refinement & Final Tuning.",
+                        deliverables: "Final impact statement.",
+                        criteria: "Innovation & Impact (5%)",
+                        submission: "Upload Impact Doc + LinkedIn Post."
+                    },
+                    {
+                        name: "7. Medi Minds",
+                        process: "Validation, Reliability Fixes & Safety Enhancements. Clinical feasibility check.",
+                        deliverables: "Clinical feasibility report.",
+                        criteria: "Testing & Clinical Feasibility (10%)",
+                        submission: "Upload Feasibility Report + LinkedIn Post."
+                    },
+                    {
+                        name: "8. App Ventures",
+                        process: "Bug Fixing, Optimization & Final Refinement. Test the app.",
+                        deliverables: "Testing report.",
+                        criteria: "Testing (10%)",
+                        submission: "Upload Test Report + LinkedIn Post."
+                    },
+                    {
+                        name: "9. Plan Horizons",
+                        process: "Model Validation + Performance Refinement. Check scalability.",
+                        deliverables: "Scalability plan.",
+                        criteria: "Scalability & Market Fit (7%)",
+                        submission: "Upload Scale Plan + LinkedIn Post."
+                    },
+                    {
+                        name: "10. Other Innovations",
+                        process: "Stabilization, Iteration & Ecosystem Integration. Test feasibility.",
+                        deliverables: "Testing report.",
+                        criteria: "Testing / Feasibility (7%)",
+                        submission: "Upload Test Report + LinkedIn Post."
+                    }
+                ]
+            }
+        ];
+
+        // Elements
+        const phaseTabsContainer = document.getElementById('phase-tabs');
+        const phaseInfoContainer = document.getElementById('phase-info');
+        const domainListContainer = document.getElementById('domain-list');
+
+        let currentPhaseId = 1;
+
+        // Init
+        function init() {
+            renderTabs();
+            loadPhase(1);
+        }
+
+        function renderTabs() {
+            phaseTabsContainer.innerHTML = '';
+            phases.forEach(phase => {
+                const btn = document.createElement('button');
+                btn.className = `phase-btn px-6 py-4 text-sm font-medium focus:outline-none transition-colors duration-200 hover:bg-gray-50 flex-grow sm:flex-grow-0 ${phase.id === currentPhaseId ? 'active' : 'text-gray-500 hover:text-gray-700'}`;
+                btn.textContent = `Phase ${phase.id}`;
+                btn.onclick = () => loadPhase(phase.id);
+                phaseTabsContainer.appendChild(btn);
+            });
+        }
+
+        function loadPhase(id) {
+            currentPhaseId = id;
+            renderTabs();
+            
+            const phase = phases.find(p => p.id === id);
+            
+            // Render Info
+            // phaseInfoContainer.innerHTML = `
+            //     <h2 class="text-2xl font-bold text-gray-800">${phase.title}</h2>
+            //     <div class="mt-2 flex flex-col sm:flex-row sm:items-center text-gray-600">
+            //         <span class="mr-4"><i class="far fa-clock mr-2 text-blue-500"></i>Duration: ${phase.duration}</span>
+            //         <span><i class="far fa-calendar-alt mr-2 text-blue-500"></i>${phase.time}</span>
+            //     </div>
+            // `;
+
+            phaseInfoContainer.innerHTML = `
+                <h2 class="text-2xl font-bold text-gray-800">${phase.title}</h2>
+                <div class="mt-2 flex flex-col sm:flex-row sm:items-center text-gray-600">
+                    <span class="mr-4"><i class="far fa-clock mr-2 text-yellow-500"></i>Duration: ${phase.duration}</span>
+                </div>
+            `;
+
+            // Render Domains
+            domainListContainer.innerHTML = '';
+            phase.domains.forEach((domain, index) => {
+                const item = document.createElement('div');
+                item.className = 'bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden';
+                
+                // Content construction (handle optional fields)
+                let contentHTML = `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-yellow-600 mb-2">1. Process</h4>
+                            <p class="text-gray-700 text-sm mb-4">${domain.process}</p>
+
+                            <h4 class="font-semibold text-yellow-600 mb-2">2. Expectations & Deliverables</h4>
+                            <p class="text-gray-700 text-sm mb-4">${domain.deliverables}</p>
+
+                            <h4 class="font-semibold text-yellow-600 mb-2">3. Criteria</h4>
+                            <p class="text-gray-700 text-sm mb-4"><span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded font-bold">Evaluated</span> ${domain.criteria}</p>
+                        </div>
+                        <div>
+                            ${domain.tools ? `
+                            <h4 class="font-semibold text-yellow-600 mb-2">5. Tools & Technologies Support</h4>
+                            <p class="text-gray-700 text-sm mb-4">${domain.tools}</p>
+                            ` : ''}
+
+                            <h4 class="font-semibold text-yellow-600 mb-2">6. Submission Guidelines</h4>
+                            <p class="text-gray-700 text-sm mb-4 bg-gray-50 p-3 rounded border border-gray-100">${domain.submission}</p>
+                        </div>
+                    </div>
+                `;
+
+                item.innerHTML = `
+                    <button class="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 flex justify-between items-center focus:outline-none" onclick="toggleAccordion(${index})">
+                        <span class="font-bold text-lg text-gray-800">${domain.name}</span>
+                        <i class="fas fa-chevron-down text-gray-400 rotate-icon" id="icon-${index}"></i>
+                    </button>
+                    <div class="accordion-content bg-white border-t border-gray-100" id="content-${index}">
+                        <div class="p-6">
+                            ${contentHTML}
+                        </div>
+                    </div>
+                `;
+                domainListContainer.appendChild(item);
+            });
+        }
+
+        function toggleAccordion(index) {
+            const content = document.getElementById(`content-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.classList.remove('open');
+            } else {
+                // Optional: Close others
+                // document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('open'));
+                // document.querySelectorAll('.rotate-icon').forEach(el => el.classList.remove('open'));
+                
+                content.classList.add('open');
+                icon.classList.add('open');
+            }
+        }
+
+        // Run on load
+        init();
+
+    </script>
+</body>
+</html>
